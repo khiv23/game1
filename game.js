@@ -1,7 +1,7 @@
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
     physics: {
         default: 'arcade',
         arcade: {
@@ -24,12 +24,13 @@ var cursors;
 var score = 0;
 var gameOver = false;
 var scoreText;
+var worldWidth=10000;
 
 var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.image('sky', 'assest/sky.png');
+    this.load.image('fon1', 'assest/sky.png');
     this.load.image('ground', 'assest/platform.png');
     this.load.image('star', 'assest/star.png');
     this.load.image('bomb', 'assest/bomb.png');
@@ -38,20 +39,27 @@ function preload ()
 
 function create ()
 {
+//Створюємо фон плиткою
+this.add.tileSprite(0,0,worldWidth,1080,"fon1").setOrigin(0,0);
     //  A simple background for our game
-    this.add.image(400, 300, 'sky');
+    //this.add.image(400, 300, 'sky');
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
 
+    for(var x=0; x<worldWidth;x=x+450){
+        console.log(x)
+        platforms.create(x,1000,'ground').setOrigin(0,0).refreshBody()
+    }
+
     //  Here we create the ground.
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+    //platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
     //  Now let's create some ledges
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
+    //platforms.create(600, 400, 'ground');
+    //platforms.create(50, 250, 'ground');
+    //platforms.create(750, 220, 'ground');
 
     // The player and its settings
     player = this.physics.add.sprite(100, 450, 'dude');
