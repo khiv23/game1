@@ -68,6 +68,13 @@ this.add.tileSprite(0,0,worldWidth,1080,"fon1").setOrigin(0,0);
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
 
+    //Налаштування камери 
+    this.camera.main.setBounds(0,0, worldWidth, window.innerHeight)
+    this.physics.world.setBounds(0,100, worldWidth, window.innerHeight)
+
+    //Слідкування камери за гравцем
+    this.cameras.main.startFollow(player)
+
     //  Our player animations, turning, walking left and walking right.
     this.anims.create({
         key: 'left',
