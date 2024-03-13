@@ -118,10 +118,10 @@ this.add.tileSprite(0,0,worldWidth,1080,"fon1").setOrigin(0,0);
     //  The score
     scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
-    //  Collide the player and the stars with the platforms
-    this.physics.add.collider(player, platforms);
-    this.physics.add.collider(stars, platforms);
-    this.physics.add.collider(bombs, platforms);
+    // //  Collide the player and the stars with the platforms
+    // this.physics.add.collider(player, platforms);
+    // this.physics.add.collider(stars, platforms);
+    // this.physics.add.collider(bombs, platforms);
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     this.physics.add.overlap(player, stars, collectStar, null, this);
@@ -188,7 +188,7 @@ function collectStar (player, star)
 
     }
 }
-
+ 
 function hitBomb (player, bomb)
 {
     this.physics.pause();
@@ -198,4 +198,4 @@ function hitBomb (player, bomb)
     player.anims.play('turn');
 
     gameOver = true;
-}
+}  
