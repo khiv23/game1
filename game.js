@@ -33,18 +33,19 @@ var record = 0
 function preload () //Завантажуємо графіку для гри
 {
     this.load.image('platform', 'assets/platform.png');
+    this.load.image('star', 'assets/star.png');
+    this.load.image('ground', 'assets/ground.png');
+    this.load.image('fon+', 'assets/fon+.png');
     this.load.image('sky', 'assets/sky.png');
-    //this.load.image('dude', 'assets/dude.png');
-    //this.load.image('star', 'assets/mountain.png');
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('dude', 
         'assets/dude.png',
         { frameWidth: 32, frameHeight: 32 }
     );
-    // this.load.spritesheet('dudeleft', 
-    //     'assets/dudeleft.png',
-    //     { frameWidth: 32, frameHeight: 32 }
-    // );
+     this.load.spritesheet('dudeleft', 
+         'assets/dudeleft.png',
+         { frameWidth: 32, frameHeight: 32 }
+     );
 }
 
 function create ()
@@ -116,37 +117,37 @@ for(var x=0; x<worldWidth; x=x+400){
     //Слідкування камери за гравцем
     this.cameras.main.startFollow(player)
 
-    // //Створюемо та налаштовуємо фізичний об'єкт бомби
-    // bombs = this.physics.add.group();
-    // this.physics.add.collider(bombs, platforms);
-    // this.physics.add.collider(player, bombs, null, this);
+     //Створюемо та налаштовуємо фізичний об'єкт бомби
+     bombs = this.physics.add.group();
+     this.physics.add.collider(bombs, platforms);
+     this.physics.add.collider(player, bombs, null, this);
 
-    // //Змінено гравітацію гравця
-    // player.body.setGravityY(0)
+     //Змінено гравітацію гравця
+     player.body.setGravityY(0)
 
-    // //Створюємо та налаштовуємо анімації
-    // this.anims.create({
-    //     key: 'left',
-    //     frames: this.anims.generateFrameNumbers('dudeleft', { start: 0, end: 3 }),
-    //     frameRate: 10,
-    //     repeat: -1
-    // });
+     //Створюємо та налаштовуємо анімації
+     this.anims.create({
+         key: 'left',
+         frames: this.anims.generateFrameNumbers('dudeleft', { start: 0, end: 3 }),
+         frameRate: 10,
+         repeat: -1
+     });
 
-    // this.anims.create({
-    //     key: 'turn',
-    //     frames: [{ key: 'dude', frame: 4 }],
-    //     frameRate: 20
-    // });
+     this.anims.create({
+         key: 'turn',
+         frames: [{ key: 'dude', frame: 4 }],
+         frameRate: 20
+     });
 
-    // this.anims.create({
-    //     key: 'right',
-    //     frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-    //     frameRate: 10,
-    //     repeat: -1
-    // });
+     this.anims.create({
+         key: 'right',
+         frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+         frameRate: 10,
+         repeat: -1
+     });
 
-    // //Додано колізії
-    // this.physics.add.collider(player, platforms);
+     //Додано колізії
+     this.physics.add.collider(player, platforms);
     // this.physics.add.collider(star, platforms);
     // this.physics.add.collider(alien, platforms);
     // this.physics.add.collider(spaceship, platforms);
@@ -156,25 +157,25 @@ for(var x=0; x<worldWidth; x=x+400){
 
 function update ()
 {
-    // //Керування персонажем
-    // if (cursors.left.isDown)
-    // {
-    //     player.setVelocityX(-160);
-    //     player.anims.play('left', true);
-    // }
-    // else if (cursors.right.isDown)
-    // {
-    //     player.setVelocityX(160);
-    //     player.anims.play('right', true);
-    // }
-    // else
-    // {
-    //     player.setVelocityX(0);
-    //     player.anims.play('turn');
-    // }
+     //Керування персонажем
+     if (cursors.left.isDown)
+     {
+         player.setVelocityX(-160);
+         player.anims.play('left', true);
+     }
+     else if (cursors.right.isDown)
+     {
+         player.setVelocityX(160);
+         player.anims.play('right', true);
+     }
+     else
+     {
+         player.setVelocityX(0);
+         player.anims.play('turn');
+     }
 
-    // if (cursors.up.isDown && player.body.touching.down)
-    // {
-    //     player.setVelocityY(-330);
-    // }
+     if (cursors.up.isDown && player.body.touching.down)
+     {
+         player.setVelocityY(-330);
+     }
 }
